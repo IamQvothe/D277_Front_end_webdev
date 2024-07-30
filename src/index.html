@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/css/output.css">
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    <title>The Golden State</title>
+    <style>
+        body {
+            background-image: url('/assets/lassen.jpg');
+        }
+    </style>
+</head>
+<body class="font-serif">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700 text-white">
+        <ul class="list-none flex justify-center space-x-12 p-1">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="capital.html">Sacramento</a></li>
+            <li><a href="city.html">San Francisco</a></li>
+            <li><a href="town.html">Oroville</a></li>
+        </ul>
+    </nav>
+    <h1 class="text-4xl text-white flex justify-center underline m-2">Welcome to California.</h1>
+    <main>
+       <section class="border border-dotted border-slate-600 m-2 text-white"> 
+            <p class="text-white p-8">California, incorporated on 09/09/1850, is the 31st state admitted to the Union.</p>
+            <p class="text-white p-8">California, often referred to as the Golden State, is renowned for its diverse culture, stunning natural landscapes, and significant contributions to technology and entertainment. It is home to iconic cities such as Los Angeles, the heart of the entertainment industry with Hollywood, and San Francisco, famous for its Golden Gate Bridge and Silicon Valley, the global hub for technology and innovation. The state boasts a varied geography that includes pristine beaches along the Pacific Coast, majestic national parks like Yosemite and Sequoia, and vibrant wine regions like Napa Valley. California’s economy is one of the largest in the world, driven by sectors such as technology, agriculture, and tourism. Known for its progressive environmental policies and cultural diversity, California remains a trendsetter in fashion, music, and lifestyle.</p>
+       </section>
+        <p class="text-white flex justify-center p-4">Questions? Ask them below!</p>
+        <div id="form-container">
+            <form class="text-black flex flex-col items-center p-4" id="myForm">
+                <label for="fname" class="m-1 text-white">First name:</label>
+                <input type="text" id="fname" placeholder="John" name="fname" class="rounded-lg p-2 border border-gray-300 opacity-50 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
+
+                <label for="lname" class="m-1 text-white">Last name:</label>
+                <input type="text" id="lname" placeholder="Doe" name="lname" class="rounded-lg p-2 border border-gray-300 opacity-50 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
+
+                <label for="email" class="m-1 text-white">Email:</label>
+                <input type="email" id="email" placeholder="JohnDoe@gmail.com" name="email" class="rounded-lg p-2 border border-gray-300 opacity-50 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
+
+                <label for="confirmEmail" class="m-1 text-white">Confirm Email:</label>
+                <input type="email" id="confirmEmail" placeholder="Confirm your email" name="confirmEmail" class="rounded-lg p-2 border border-gray-300 opacity-50 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
+
+                <label for="textbox" class="text-white m-1">Questions:</label>
+                <input type="text" id="textbox" name="textbox" placeholder="Questions, comments, concerns?" class="rounded-lg p-2 border-gray-300 opacity-50 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-500">
+
+                <div id="errorMessage" class="error m-2"></div>
+                
+                <button type="submit" class="bg-transparent hover:bg-white text-white font-semibold hover:text-black  border border-white hover:border-transparent rounded mx-4">
+                    Submit
+                </button>
+            </form>
+        </div>
+        <div id="message-container" class="hidden p-6 shadow-md">
+            <p class="flex justify-center text-3xl font-medium text-white">We will contact you shortly, Thank you for your question!</p>
+        </div>
+    </main>
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            // Prevent form submission
+            event.preventDefault();
+            
+            // Get the values of the email fields
+            const email = document.getElementById('email').value;
+            const confirmEmail = document.getElementById('confirmEmail').value;
+            
+            // Get the error message element
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Check if the email addresses match
+            if (email !== confirmEmail) {
+                // If they don't match, display an error message and prevent form submission
+                errorMessage.textContent = 'Email addresses do not match. Please try again.';
+            } else {
+                // If they match, clear the error message and proceed
+                errorMessage.textContent = '';
+                
+                // Hide form and show the thank you message
+                document.getElementById('form-container').classList.add('hidden');
+                document.getElementById('message-container').classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
